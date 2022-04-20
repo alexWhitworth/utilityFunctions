@@ -1,9 +1,11 @@
-# @description calculate absolute mean standardized differences between vectors X and Y
-# @param x \code{numeric} vector, assumed to be "treated" units
-# @param y \code{numeric} vector, assumed to be "control" units
-# @param v_xy Expected \code{list(var_x, var_y)}, for pre-computed variances (ie. scaling factors)
-# to be used in AMSD calculation. The scaling factors should be the same pre and post matching
-# for comparability. 
+#' @title Absolute Mean Standardized Differences (numeric)
+#' @description calculate absolute mean standardized differences between vectors X and Y
+#' @param x \code{numeric} vector, assumed to be "treated" units
+#' @param y \code{numeric} vector, assumed to be "control" units
+#' @param v_xy Expected \code{list(var_x, var_y)}, for pre-computed variances (ie. scaling factors)
+#' to be used in AMSD calculation. The scaling factors should be the same pre and post matching
+#' for comparability. 
+#' @return A numeric scalar
 amsd.numeric <- function(x, y, v_xy= NULL, na.rm= TRUE) {
   x_bar <- mean(x, na.rm= na.rm)
   y_bar <- mean(y, na.rm=na.rm)
@@ -18,16 +20,18 @@ amsd.numeric <- function(x, y, v_xy= NULL, na.rm= TRUE) {
   return(abs(x_bar - y_bar) / sqrt((v_x + v_y) / 2))
 }
 
-# @description calculate absolute mean standardized differences between vectors X and Y.
-# with \code{calc_var= TRUE} can be used to calcualte variances vs return AMSD. Useful for 
-# pre-calculating the scaling factor \code{v_xy}
-# @param DT a class \code{'data.table'} object
-# @param v character scalar with the name of the variable to be calculated
-# @param t character scalar with the name of the treatment variable
-# @param v_xy Expected \code{list(var_x, var_y)}, for pre-computed variances (ie. scaling factors)
-# to be used in AMSD calculation. The scaling factors should be the same pre and post matching
-# for comparability. 
-# @param calc_var 
+#' @title Absolute Mean Standardized Differences (multinomial)
+#' @description calculate absolute mean standardized differences between vectors X and Y.
+#' with \code{calc_var= TRUE} can be used to calcualte variances vs return AMSD. Useful for 
+#' pre-calculating the scaling factor \code{v_xy}
+#' @param DT a class \code{'data.table'} object
+#' @param v character scalar with the name of the variable to be calculated
+#' @param t character scalar with the name of the treatment variable
+#' @param v_xy Expected \code{list(var_x, var_y)}, for pre-computed variances (ie. scaling factors)
+#' to be used in AMSD calculation. The scaling factors should be the same pre and post matching
+#' for comparability. 
+#' @param calc_var Logical. Do you wish to calculate pooled variance?
+#' @return A numeric scalar
 amsd.multinomial <- function(DT, v, t, v_xy= NULL, na.rm= TRUE, calc_var= FALSE) {
   # 01. grab variables, calculate summary statistics
   tmpDT <- data.table(
