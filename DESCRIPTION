@@ -1,4 +1,4 @@
-Package: utils
+Package: utilityFunctions
 Title: A set of utility functions that I sometimes find useful in R.
 Version: 0.0.1
 Authors@R: 
