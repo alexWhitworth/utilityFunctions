@@ -1,0 +1,14 @@
+Package: utils
+Title: A set of utility functions that I sometimes find useful in R.
+Version: 0.0.1
+Authors@R: 
+    person("Alex", "Whitworth", , "whitworth.alex@gmail.com"
+            , role = c("aut", "cre"))
+Description: This package contains a set of somewhat useful utility functions for R.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
