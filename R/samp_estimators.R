@@ -18,7 +18,6 @@ mean_est <- function(y, pi, na.rm= TRUE, trim= TRUE, trim_max= 100,
                            method= c('Horvitz-Thomson', 'Generalized-unequal-prob', 'Hansen-Hurwitz'
                                      , 'weighted-mean')) {
   method <- match.arg(method)
-  pi <- pi / sum(pi)  # ensure unit norm
   if (trim) {
     pi <- ifelse(pi < 1 / trim_max, 1 / trim_max, pi)
   }
@@ -56,7 +55,6 @@ var_est <- function(y, pi, mu, na.rm= TRUE, trim= TRUE, trim_max= 100,
                               , 'weighted-mean')) {
   
   method <- match.arg(method)
-  pi <- pi / sum(pi)  # ensure unit norm
   if (trim) {
     pi <- ifelse(pi < 1 / trim_max, 1 / trim_max, pi)
   }
