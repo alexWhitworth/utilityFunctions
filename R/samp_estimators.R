@@ -27,7 +27,7 @@ mean_est <- function(y, pi, na.rm= TRUE, trim= TRUE, trim_max= 100,
   mu <- switch(method
           , 'Hansen-Hurwitz' = 1 / N * (1 / length(y)) * sum(y / pi, na.rm= na.rm) # sample w/ replacement
           , 'Horvitz-Thompson' = 1 / N * sum(y / pi, na.rm= na.rm) # sample w/o replacement
-          , 'Generalized-unequal-prob' = sum(y/pi, na.rm= na.rm)
+          , 'Generalized-unequal-prob' = 1 / N * sum(y / pi, na.rm= na.rm)
           , 'weighted-mean' = weighetd.mean(y, w= 1/pi, na.rm= na.rm)
   )
   return(mu)
