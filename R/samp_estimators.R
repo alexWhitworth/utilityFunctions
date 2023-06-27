@@ -25,7 +25,7 @@ mean_est <- function(y, pi, na.rm= TRUE, trim= TRUE, trim_max= 100,
   N <- sum(1 / pi, na.rm= na.rm)
   
   mu <- switch(method
-          , 'Hansen-Hurwitz' = 1 / N * (1 / len(y)) * sum(y / pi, na.rm= na.rm) # sample w/ replacement
+          , 'Hansen-Hurwitz' = 1 / N * (1 / length(y)) * sum(y / pi, na.rm= na.rm) # sample w/ replacement
           , 'Horvitz-Thompson' = 1 / N * sum(y / pi, na.rm= na.rm) # sample w/o replacement
           , 'Generalized-unequal-prob' = sum(y/pi, na.rm= na.rm)
           , 'weighted-mean' = weighetd.mean(y, w= 1/pi, na.rm= na.rm)
@@ -64,7 +64,7 @@ var_est <- function(y, pi, mu, na.rm= TRUE, trim= TRUE, trim_max= 100,
   
   # population total
   tau <- switch(method
-          , 'Hansen-Hurwitz' = (1 / len(y)) * sum(y / pi, na.rm= na.rm)
+          , 'Hansen-Hurwitz' = (1 / length(y)) * sum(y / pi, na.rm= na.rm)
           , 'Horvitz-Thompson' = sum(y / pi, na.rm= na.rm)
           , 'Generalized-unequal-prob' = mu * N
   )
